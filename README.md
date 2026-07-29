@@ -12,36 +12,36 @@ This library includes 10 prompts across three connected workflows. The prompts a
 
 ## Workflow map
 
-| Phase | Workflow                                  | Prompts |
+| Phase | Workflow | Prompts |
 | ----- | ----------------------------------------- | ------- |
-| 1     | Website audit and lead capture            | P1–P4   |
-| 2     | New member and client onboarding          | P5–P7   |
-| 3     | Client journey and recurring member tasks | P8–P10  |
+| 1 | Website audit and lead capture | P1–P4 |
+| 2 | New member and client onboarding | P5–P7 |
+| 3 | Client journey and recurring member tasks | P8–P10 |
 
 ### Phase 1 — Website audit and lead capture
 
-| ID | Task                                      | Chain             |
+| ID | Task | Chain |
 | -- | ----------------------------------------- | ----------------- |
-| P1 | Conversion copy audit                     | Step 1 — analyse  |
-| P2 | Hero section, headline and CTA rewrite    | Step 2 — generate |
-| P3 | Brand voice and claims compliance check   | Step 3 — verify   |
-| P4 | Inbound enquiry triage and response draft | Standalone        |
+| P1 | Conversion copy audit | Step 1 — analyse |
+| P2 | Hero section, headline and CTA rewrite | Step 2 — generate |
+| P3 | Brand voice and claims compliance check | Step 3 — verify |
+| P4 | Inbound enquiry triage and response draft | Standalone |
 
 ### Phase 2 — New member and client onboarding
 
-| ID | Task                                                            | Dependency |
+| ID | Task | Dependency |
 | -- | --------------------------------------------------------------- | ---------- |
-| P5 | Convert an intake form into a structured client profile         | —          |
-| P6 | Create a welcome sequence and first-session preparation message | Uses P5    |
-| P7 | Create a goal-setting brief                                     | Uses P5    |
+| P5 | Convert an intake form into a structured client profile | — |
+| P6 | Create a welcome sequence and first-session preparation message | Uses P5 |
+| P7 | Create a goal-setting brief | Uses P5 |
 
 ### Phase 3 — Client journey and recurring member tasks
 
-| ID  | Task                                                               | Dependency |
+| ID | Task | Dependency |
 | --- | ------------------------------------------------------------------ | ---------- |
-| P8  | Create scheduled check-in and milestone messages                   | —          |
-| P9  | Draft responses to enquiries, complaints and cancellation requests | —          |
-| P10 | Identify at-risk members and draft re-engagement messages          | —          |
+| P8 | Create scheduled check-in and milestone messages | — |
+| P9 | Draft responses to enquiries, complaints and cancellation requests | — |
+| P10 | Identify at-risk members and draft re-engagement messages | — |
 
 **Chained module:** P1 → P2 → P3 forms a three-step process: analyse, generate and verify. The full process is documented in `/chain-modules/website-copy-chain.md`.
 
@@ -76,3 +76,27 @@ All examples in this repository are synthetic.
 The repository does not include real client names, contact details, health information, injury information or intake responses. Prompts use template variables such as `{client_name}`, `{goal}` and `{tenure_months}` and are intended to run on de-identified information.
 
 ## Repository structure
+
+```
+├── phase-1-lead-capture/
+├── phase-2-onboarding/
+├── phase-3-member-journey/
+├── chain-modules/
+└── evidence/
+```
+
+The `evidence` folder holds the Prompt Lab checkpoint screenshots used to show how each prompt developed across versions.
+
+## Version convention
+
+Each prompt file uses the same three-stage naming:
+
+* **v1** — the initial attempt, written without a structured framework
+* **v2** — the RACE framework applied (role, action, context, expectation)
+* **v3** — refined after reviewing the v2 output and Prompt Lab scores
+
+## How to read this repository
+
+Each prompt file contains every version of that prompt, a short note explaining what changed between versions and why, and the Prompt Lab review scores for each one. The checkpoint comparison screenshots sit in the `evidence` folder.
+
+If you are reviewing a single example, `phase-1-lead-capture/P1-conversion-audit.md` has the most detailed iteration history.
