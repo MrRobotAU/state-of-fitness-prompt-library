@@ -1,5 +1,10 @@
 # P3 — Brand voice and claims compliance check
 
+| Version | Clarity | Constraints | Structure | Verifiability | Hallucination | Overall |
+| --- | --- | --- | --- | --- | --- | --- |
+| v1 | 85 | 70 | 75 | 80 | 90 | 80.25 |
+| v2 | 90 | 95 | 90 | 90 | 95 | 91.5 |
+
 ## v1
 
 ```
