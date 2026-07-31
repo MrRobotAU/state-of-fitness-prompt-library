@@ -11,7 +11,7 @@ All examples in this file are synthetic.
 
 | Version | Clarity | Constraints | Structure | Verifiability | Hallucination | Overall |
 | --- | --- | --- | --- | --- | --- | --- |
-| v1 | | | | | | |
+| v1 | 85 | 60 | 70 | 75 | 90 | 76.25 |
 | v2 | 90 | 95 | 90 | 85 | 95 | 90.25 |
 
 ---
@@ -27,8 +27,33 @@ last session felt like they hadn't read my program at all. I'd like a refund for
 the last month. Marcus"
 ```
 
-Scores:
-What happened:
+**76.25** — clarity 85 · constraints 60 · structure 70 · verifiability 75 · hallucination 90
+
+**What happened:** The reply conceded liability twice — "it's certainly not the
+standard we aim to provide" and "I apologize for the lack of communication
+regarding the coach changes" — accepting Marcus's account of events as established
+fact before anyone had checked the record. Written by a model with no access to the
+account and no authority to concede anything.
+
+It then committed the business to a process it invented: "I will review your account
+and discuss this with our team to see what we can do." No such process was
+described, and the phrasing implies a refund is under consideration.
+
+It offered a retention incentive — "a dedicated session with one of our senior
+coaches" — a commercial offer with a cost attached, made without approval.
+
+The register was wrong in a way that compounds the risk. Four apologies, "we'd love
+to", and "thank you for being with us" produce a tone of concession that would be
+awkward to walk back if the account record contradicts the complaint.
+
+**Note on the rubric's suggested rewrite:** Prompt Lab recommended the prompt
+instruct the model to "apologize for the inconvenience" and "address the refund
+request" — both of which require authority the drafting step does not have. As in
+P6, P7 and P8, the review's remedy is the failure.
+
+At 76.25 this is the lowest-scoring prompt in the library, and the one whose output
+carries the most direct commercial exposure. Constraints scored 60: the prompt
+placed no limit on what the model could commit the business to.
 
 ---
 
