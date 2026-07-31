@@ -12,7 +12,7 @@ All examples in this file are synthetic.
 | Version | Clarity | Constraints | Structure | Verifiability | Hallucination | Overall |
 | --- | --- | --- | --- | --- | --- | --- |
 | v1 | 90 | 75 | 80 | 85 | 90 | 84.25 |
-| v2 | | | | | | |
+| v2 | 85 | 90 | 80 | 85 | 90 | 85.25 |
 
 ---
 
