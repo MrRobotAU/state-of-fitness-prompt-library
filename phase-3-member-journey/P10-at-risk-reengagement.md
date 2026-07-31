@@ -11,8 +11,8 @@ All examples in this file are synthetic.
 
 | Version | Clarity | Constraints | Structure | Verifiability | Hallucination | Overall |
 | --- | --- | --- | --- | --- | --- | --- |
-| v1 | | | | | | |
-| v2 | | | | | | |
+| v1 | | | | | | 82.5 |
+| v2 | 90 | 95 | 90 | 85 | 95 | 90.5 |
 
 ---
 
@@ -135,6 +135,39 @@ last_session_note: "shortened session, said he was flat out at work"
 """
 ```
 
-Scores:
-Changed:
-What happened:
+**90.5** — clarity 90 · constraints 95 · structure 90 · verifiability 85 · hallucination 95
+
+**Changed:** Reframed the task from churn recovery to schedule change. Prohibited
+inferring reasons or feelings, describing the attendance pattern back to the
+member, offering commercial concessions, and asking the member to commit or
+explain. Required the message to be ignorable and to name pausing or stopping as
+legitimate. Added an `inferences_avoided` field and an `insufficient_data` fallback.
+
+Run on the same member as v1 so the prompt was the only variable.
+
+**What happened:** Every v1 exposure was removed. No attendance figures, no
+reference to the private session note, no inferred reason, no discount, no guilt
+framing. The message states pausing or stopping is fine and closes with "no need to
+reply unless you want to."
+
+The session note stayed internal, appearing only in `coach_note` where it belongs.
+The internal assessment is now evidence-bound: `pattern_changed` supported by the
+stated data, with no speculation about cause or intent.
+
+`inferences_avoided` returned "reason for absence", "member's feelings", "member's
+intention to leave". This field has no equivalent elsewhere in the library — it
+requires the model to declare what it deliberately did not conclude, producing an
+auditable record of restraint rather than only a record of output. It is the most
+useful single field designed in this project and would be worth retrofitting to P5
+and P7.
+
+**Residual issue:** the message avoids *stating* that attendance is monitored, but a
+studio that spontaneously offers to let you pause has evidently noticed something.
+The surveillance is implied by the fact of contact, not by its wording. Rule 2
+controls disclosure but cannot control inference. This is a limit of prompt design:
+the remaining risk sits in the decision to send at all, which is why
+`recommend_contact` is a recommendation to a coach rather than a trigger.
+
+**On the rubric:** 82.25 → 90.5. The review's suggested rewrite for v1 recommended
+acknowledging the attendance drop and the session note — the two failures. Across
+P6, P7, P8, P9 and P10 the review prescribed the failure it had just scored as safe.
