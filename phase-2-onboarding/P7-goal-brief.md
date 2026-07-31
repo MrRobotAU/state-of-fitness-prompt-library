@@ -11,8 +11,8 @@ All examples in this file are synthetic.
 
 | Version | Clarity | Constraints | Structure | Verifiability | Hallucination | Overall |
 | --- | --- | --- | --- | --- | --- | --- |
-| v1 | | | | | | |
-| v2 | | | | | | |
+| v1 | 85 | 70 | 75 | 80 | 85 | 79.5 |
+| v2 | 90 | 95 | 90 | 85 | 95 | 90.25 |
 
 ---
 
