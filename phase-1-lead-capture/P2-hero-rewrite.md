@@ -9,8 +9,9 @@
 
 | Version | Clarity | Constraints | Structure | Verifiability | Hallucination | Overall |
 | --- | --- | --- | --- | --- | --- | --- |
-| v1 | | | | | | |
-| v2 | | | | | | |
+| v1 | 85 | 60 | 70 | 75 | 90 | 76.25 |
+| v2 | 90 | 95 | 85 | 90 | 95 | 90.25 |
+| v3 | 90 | 95 | 90 | 90 | 95 | 91.5 |
 
 ---
 
