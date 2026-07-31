@@ -56,7 +56,7 @@ is the direction of both clinical overreach and privacy exposure.
 
 ```
 ROLE
-Client services coordinator at a boutique personal training studio.
+Client services coordinator at a boutique personal training studio called State of Fitness in South Yarra. 
 
 TASK
 Draft a check-in message for the member in the MEMBER block. The trigger type is
@@ -106,6 +106,34 @@ original_goals: ["get stronger", "manage a recurring shoulder issue"]
 """
 ```
 
-Scores:
-Changed:
-What happened:
+**90.25** — clarity 90 · constraints 95 · structure 85 · verifiability 90 · hallucination 95
+
+**Changed:** Added role, register and the reason the register matters. Prohibited
+inferring progress or feelings, referencing injuries, prescribing programming, and
+congratulating on tenure. Required one open question and a 100-word cap. Added JSON
+output with a `fields_used` audit trail.
+
+Run on the same member as v1 so the prompt was the only variable.
+
+**What happened:** Every v1 failure was corrected. The shoulder is absent. No claim
+of progress, no congratulation, no exclamation marks. Tenure is stated as fact:
+"you have now been with State of Fitness for six months."
+
+`fields_used` returned `first_name`, `tenure_months` and `attendance_pattern`,
+confirming `original_goals` — which contains the medical disclosure — was never
+drawn on. The same auditability mechanism used in P6.
+
+Two observations:
+
+- At 38 words the message is well under the cap and arguably too spare. Stripping
+  every unverifiable claim leaves little content, which is the honest consequence of
+  the constraint rather than a fault: the studio has not measured Priya's progress,
+  so it has nothing to say about it. The open question carries the message.
+- `coach_note` described the prompt's own compliance — "avoids any mention of
+  shoulder issues... as per guidelines" — rather than flagging anything actionable
+  for the coach. The field was defined loosely and produced a self-report instead of
+  a note. A stricter definition, or `null` when nothing needs raising, would fix it.
+
+Structure (85) was again the lowest dimension, with the reviewer citing section
+separation. Consistent with P3, P4 and P6, confirming this as a property of the
+prompt format rather than any individual prompt.
