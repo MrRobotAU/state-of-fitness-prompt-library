@@ -11,8 +11,8 @@ All examples in this file are synthetic. No real client data is used.
 
 | Version | Clarity | Constraints | Structure | Verifiability | Hallucination | Overall |
 | --- | --- | --- | --- | --- | --- | --- |
-| v1 | | | | | | |
-| v2 | | | | | | |
+| v1 | 90 | 70 | 75 | 60 | 80 | 77.5 |
+| v2 | 90 | 95 | 85 | 90 | 95 | 90.5 |
 
 ---
 
