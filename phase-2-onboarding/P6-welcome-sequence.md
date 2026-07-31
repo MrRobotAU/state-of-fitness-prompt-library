@@ -105,10 +105,47 @@ Return one JSON object, nothing else:
 
 PROFILE
 """
-[paste P5 v2 JSON output]
+{ "first_name": "Jordan", "age": 38, "occupation_context": "Works in finance, long hours, usually in by 7", "training_history": "Trained a bit at uni, nothing serious since", "stated_goals": [ "lose some weight", "feel less wrecked by Friday", "be able to keep up with my kids" ], "disclosures": [ { "type": "injury", "client_words": "dodgy right knee - did something to it playing footy about ten years ago", "practitioner_involved": "sees a physio occasionally" }, { "type": "sleep", "client_words": "sleep is poor, maybe 5-6 hours", "practitioner_involved": "" } ], "availability": [ "Tues mornings", "Thurs mornings", "sometimes Saturday" ], "coach_flags": [ "dodgy right knee with physio involvement", "poor sleep of 5-6 hours" ], "missing_information": [] }
 """
 ```
 
-Scores:
-Changed:
-What happened:
+**85.25** — clarity 85 · constraints 90 · structure 80 · verifiability 85 · hallucination 90
+**General Review (output audit):** 81.5
+
+**Changed:** Added role, register and first-session detail. Rule 2 prohibits
+repeating injury, medical or sleep disclosures back to the client. Rule 4 prohibits
+describing or prescribing any exercise or training approach. Added word limit, JSON
+output, and a `profile_fields_used` field for auditability.
+
+Run on the same profile as v1 so the prompt was the only variable.
+
+**What happened:** Every substantive v1 failure was corrected. No health disclosures
+appear in the message body — both were routed to `coach_note` for the coach to
+raise in person. No programming, no outcome claims, no prescribed exercise types.
+The "usually in by 7" ambiguity did not propagate, because `occupation_context` was
+not used at all.
+
+`profile_fields_used` returned only `first_name`, `training_history` and
+`stated_goals`, providing a verifiable record that the disclosure fields were never
+drawn on.
+
+Structure scored lowest (80). Both reviews independently flagged the same cause —
+the PROFILE data block is not clearly enough separated from the instructions. The
+same criticism appeared in P3 and P4, so it is a consistent weakness of this prompt
+format rather than a fault specific to P6.
+
+The remaining substantive issue is that goals were paraphrased rather than quoted.
+Rule 3 said "in their own framing", which was too loose; "verbatim" would have been
+enforceable.
+
+**Method note:** this prompt was scored on both tabs. Prompt Review (85.25) assesses
+construction; General Review (81.5) assesses the output against the prompt's own
+rules, functioning as a compliance audit. Only the second confirmed that rule 2
+actually fired. The gap running through this library — that a prompt score cannot
+tell you whether a rule worked — is addressable by running both.
+
+**Reviewer feedback not adopted:** the General Review recommended removing the
+greeting to maintain a neutral studio voice. This was rejected. The register rule
+targets motivational and aspirational language, not ordinary courtesy, and an
+unaddressed welcome email would read as automated. The paraphrasing criticism was
+accepted as valid.
